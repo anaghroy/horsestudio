@@ -1,0 +1,40 @@
+@font-face {
+  font-family: regular;
+  src: url(../../assets/fonts/Heebo-Regular.woff2);
+}
+@font-face {
+  font-family: medium;
+  src: url(../../assets/fonts/Gilroy-Medium.woff2);
+}
+@font-face {
+  font-family: light;
+  src: url(../../assets/fonts/Heebo-Light.woff2);
+}
+@font-face {
+  font-family: bold;
+  src: url(../../assets/fonts/Gilroy-Bold.woff2);
+}
+@font-face {
+  font-family: thin;
+  src: url(../../assets/fonts/Heebo-Thin.woff2);
+}
+@font-face {
+  font-family: GTregular;
+  src: url(../../assets/fonts/GTSectraDisplay-Regular.woff2);
+}
+
+@font-face {
+  font-family: GTbold;
+  src: url(../../assets/fonts/GTSectraDisplay-Bold.woff2);
+}
+
+/*Fonts Variables*/
+:root {
+  --font-regular: "regular", sans-serif;
+  --font-GTregular: "GTregular", sans-serif;
+  --font-light: "light", sans-serif;
+  --font-medium: "medium", sans-serif;
+  --font-bold: "bold", sans-serif;
+  --font-GTbold: "GTbold", sans-serif;
+  --font-thin: "thin";
+}
