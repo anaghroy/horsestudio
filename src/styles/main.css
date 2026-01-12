@@ -165,6 +165,41 @@ main {
   min-height: 100vh;
   position: relative;
   z-index: 2;
+  padding-block: 20rem;
+}
+#section-2 .titles {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 5rem;
+}
+#section-2 .titles .top {
+  width: 23%;
+}
+#section-2 .titles .top h1 {
+  text-align: right;
+  font-family: var(--font-GTbold);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  opacity: 0.5;
+  letter-spacing: 0.2rem;
+}
+#section-2 .titles .title {
+  display: flex;
+  gap: 4rem;
+  opacity: 0.5;
+  padding-block: 2rem;
+  align-items: flex-s;
+}
+#section-2 .titles .title h1 {
+  font-size: 6rem;
+  font-family: var(--font-thin);
+  font-weight: 300;
+  line-height: 1;
+}
+#section-2 .titles .title small {
+  margin-top: 0.6rem;
+  font-family: var(--font-bold);
+  font-size: 0.9rem;
 }
 
 #section-3 {
