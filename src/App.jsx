@@ -1,11 +1,13 @@
-import Dog from './components/Dog'
-
+import Dog from "./components/Dog";
+import { Canvas } from "@react-three/fiber";
 const App = () => {
   return (
     <>
-      <Dog/>
+      <Canvas>
+        <Dog />
+      </Canvas>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
