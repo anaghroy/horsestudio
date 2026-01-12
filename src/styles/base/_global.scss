@@ -7,6 +7,10 @@
 html, body, #root{
     width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: #15161B;
+    color: #FCFCFC;
     font-family: var(--font-regular);
+}
+main{
+    position: relative;
 }

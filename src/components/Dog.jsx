@@ -1,5 +1,5 @@
 import { Canvas, useThree } from "@react-three/fiber";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import {
   OrbitControls,
   useGLTF,
@@ -10,17 +10,24 @@ import horse from "../model/horse.glb";
 import dog from "../assets/images/dog_normals.jpg";
 import bodycolor from "../assets/images/matcap/mat-2.png";
 import * as THREE from "three";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Dog = () => {
+  /*GSAP Animations*/
+  gsap.registerPlugin(useGSAP());
+  gsap.registerPlugin(ScrollTrigger);
+
   // Load the GLB horse model using drei's GLTF loader
   const model = useGLTF(horse);
 
   // Access and configure the Three.js camera and renderer
   useThree(({ camera, scene, gl }) => {
     // Position the camera so the horse is visible on load
-    camera.position.z = 1.9;
-    camera.position.y = 1;
-    camera.position.x = 0.9;
+    camera.position.z = 2.3;
+    camera.position.y = 0.5;
+    camera.position.x = 0.1;
   });
 
   /*Animation*/
@@ -57,15 +64,49 @@ const Dog = () => {
     child.material = horseMaterial;
   });
 
+  /*Ref hook*/
+  const horseModel = useRef(model);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#section-1",
+        endTrigger: "#section-3",
+        start: "top top",
+        end: "bottom bottom",
+        markers: true,
+        scrub: true,
+      },
+    });
+    
+    tl
+      .to(horseModel.current.scene.position, {
+        z: "-=0.5",
+        y: "+=0.1"
+      })
+      .to(horseModel.current.scene.rotation, {
+        y: `-=${Math.PI / 15}`
+      })
+      .to(horseModel.current.scene.rotation,{
+        y:`-=${Math.PI}`
+
+      }, "third")
+      .to(horseModel.current.scene.position,{
+        x:"-=0.1",
+        z:"+=0.2",
+        y:"-=0.05"
+      }, "third")
+  }, []);
+
   return (
     <>
       <primitive
         object={model.scene}
-        position={[0, -0.6, 0.8]}
+        position={[0, -0.5, 0.8]}
         rotation={[0, -Math.PI / 1, 0]}
       />
       <directionalLight position={[0, 5, 5]} color={0xffffff} intensity={10} />
-      <OrbitControls />
+      {/* <OrbitControls position={[0, -0.6, 0.8]}/> */}
       {/* <boxGeometry args={[1, 1, 1]} />  */}
       {/*Height, width, depth*/}
     </>
