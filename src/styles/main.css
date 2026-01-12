@@ -48,16 +48,91 @@
   box-sizing: border-box;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
-  background-color: #15161B;
-  color: #FCFCFC;
+  background-color: #15161b;
+  color: #fcfcfc;
   font-family: var(--font-regular);
 }
 
 main {
   position: relative;
+}
+
+#canvas-elem::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background-image: url(../src/assets/images/background-l.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: all 0.3s ease-in;
+}
+
+/*Parent selector*/
+main:has(#section-2 .title:hover) #canvas-elem::after {
+  opacity: 0;
+}
+
+/*All background images*/
+.images {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.images img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+main:has(#section-2 .title[img-title=tomorrowland]:hover) #tomorrowland {
+  opacity: 1;
+  background-color: rgb(4, 7, 24);
+}
+
+main:has(#section-2 .title[img-title=navy-pier]:hover) #navy-pier {
+  opacity: 1;
+  background-color: rgb(4, 7, 24);
+}
+
+main:has(#section-2 .title[img-title=msi-chicago]:hover) #msi-chicago {
+  opacity: 1;
+  background-color: rgb(4, 7, 24);
+}
+
+main:has(#section-2 .title[img-title=phone]:hover) #phone {
+  opacity: 1;
+  background-color: rgb(4, 7, 24);
+}
+
+main:has(#section-2 .title[img-title=kikk]:hover) #kikk {
+  opacity: 1;
+  background-color: rgba(1, 15, 92, 0.679);
+}
+
+main:has(#section-2 .title[img-title=kennedy]:hover) #kennedy {
+  opacity: 1;
+  background-color: rgb(4, 24, 4);
+}
+
+main:has(#section-2 .title[img-title=opera]:hover) #opera {
+  opacity: 1;
+  background-color: rgba(137, 4, 4, 0.762);
 }
 
 /*layout*/
@@ -186,9 +261,10 @@ main {
 #section-2 .titles .title {
   display: flex;
   gap: 4rem;
-  opacity: 0.5;
+  opacity: 0.3;
   padding-block: 2rem;
-  align-items: flex-s;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 #section-2 .titles .title h1 {
   font-size: 6rem;
@@ -200,6 +276,10 @@ main {
   margin-top: 0.6rem;
   font-family: var(--font-bold);
   font-size: 0.9rem;
+  letter-spacing: 0.1rem;
+}
+#section-2 .titles .title:hover {
+  opacity: 1;
 }
 
 #section-3 {

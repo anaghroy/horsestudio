@@ -13,6 +13,26 @@ import * as THREE from "three";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import tex1 from "../assets/images/matcap/mat-1.png";
+import tex2 from "../assets/images/matcap/mat-2.png";
+import tex3 from "../assets/images/matcap/mat-3.png";
+import tex4 from "../assets/images/matcap/mat-4.png";
+import tex5 from "../assets/images/matcap/mat-5.png";
+import tex6 from "../assets/images/matcap/mat-6.png";
+import tex7 from "../assets/images/matcap/mat-7.png";
+import tex8 from "../assets/images/matcap/mat-8.png";
+import tex9 from "../assets/images/matcap/mat-9.png";
+import tex10 from "../assets/images/matcap/mat-10.png";
+import tex11 from "../assets/images/matcap/mat-11.png";
+import tex12 from "../assets/images/matcap/mat-12.png";
+import tex13 from "../assets/images/matcap/mat-13.png";
+import tex14 from "../assets/images/matcap/mat-14.png";
+import tex15 from "../assets/images/matcap/mat-16.png";
+import tex16 from "../assets/images/matcap/mat-16.png";
+import tex17 from "../assets/images/matcap/mat-17.png";
+import tex18 from "../assets/images/matcap/mat-18.png";
+import tex19 from "../assets/images/matcap/mat-19.png";
+import tex20 from "../assets/images/matcap/mat-20.png";
 
 const Dog = () => {
   /*GSAP Animations*/
@@ -38,22 +58,110 @@ const Dog = () => {
 
   // Load normal map and matcap textures together
   // useTexture returns an array because we pass an array of URLs
-  const [normalMap, sampleMatCap] = useTexture([dog, bodycolor]).map(
-    (texture) => {
-      // Required fixes for GLTF textures
-      texture.flipY = false;
-      texture.colorSpace = THREE.SRGBColorSpace;
-      return texture;
-    }
-  );
+  const [normalMap] = useTexture([dog]).map((texture) => {
+    // Required fixes for GLTF textures
+    texture.flipY = false;
+    texture.colorSpace = THREE.SRGBColorSpace;
+    return texture;
+  });
 
   /**Selection of an "Horses" objects */
-  const targetNames = ["Object_", "Horse_Horse_0", "Hair_Hair_0"];
+  const targetNames = ["Object_"];
+
+  const [
+    mat1,
+    mat2,
+    mat3,
+    mat4,
+    mat5,
+    mat6,
+    mat7,
+    mat8,
+    mat9,
+    mat10,
+    mat11,
+    mat12,
+    mat13,
+    mat14,
+    mat15,
+    mat16,
+    mat17,
+    mat18,
+    mat19,
+    mat20,
+  ] = useTexture([
+    tex1,
+    tex2,
+    tex3,
+    tex4,
+    tex5,
+    tex6,
+    tex7,
+    tex8,
+    tex9,
+    tex10,
+    tex11,
+    tex12,
+    tex13,
+    tex14,
+    tex15,
+    tex16,
+    tex17,
+    tex18,
+    tex19,
+    tex20,
+  ]).map((texture) => {
+    // Required fixes for GLTF textures
+    texture.colorSpace = THREE.SRGBColorSpace;
+    return texture;
+  });
+
+  /*Referance Material*/
+
+  const material = useRef({
+    uMatcap1: { value: mat2 },
+    uMatcap2: { value: mat19 },
+    uProgress: { value: 0.5 },
+  });
 
   const horseMaterial = new THREE.MeshMatcapMaterial({
     normalMap: normalMap, // Normal map for surface detail
-    matcap: sampleMatCap, // Matcap texture for lighting look
+    matcap: mat2, // Matcap texture for lighting look
   });
+
+  /*Shader function*/
+    function onBeforeCompile(shader) {
+    shader.uniforms.uMatcapTexture1 = material.current.uMatcap1;
+    shader.uniforms.uMatcapTexture2 = material.current.uMatcap2;
+    shader.uniforms.uProgress = material.current.uProgress;
+
+    // Store reference to shader uniforms for GSAP animation
+
+    shader.fragmentShader = shader.fragmentShader.replace(
+      "void main() {",
+      `
+        uniform sampler2D uMatcapTexture1;
+        uniform sampler2D uMatcapTexture2;
+        uniform float uProgress;
+
+        void main() {
+        `
+    );
+
+    shader.fragmentShader = shader.fragmentShader.replace(
+      "vec4 matcapColor = texture2D( matcap, uv );",
+      `
+          vec4 matcapColor1 = texture2D( uMatcapTexture1, uv );
+          vec4 matcapColor2 = texture2D( uMatcapTexture2, uv );
+          float transitionFactor  = 0.2;
+          
+          float progress = smoothstep(uProgress - transitionFactor,uProgress, (vViewPosition.x+vViewPosition.y)*0.5 + 0.5);
+
+          vec4 matcapColor = mix(matcapColor2, matcapColor1, progress );
+        `
+    );
+  }
+  horseMaterial.onBeforeCompile = onBeforeCompile;
 
   // Traverse through every object in the model scene
   model.scene.traverse((child) => {
@@ -78,24 +186,30 @@ const Dog = () => {
         scrub: true,
       },
     });
-    
-    tl
-      .to(horseModel.current.scene.position, {
-        z: "-=0.5",
-        y: "+=0.1"
-      })
-      .to(horseModel.current.scene.rotation, {
-        y: `-=${Math.PI / 15}`
-      })
-      .to(horseModel.current.scene.rotation,{
-        y:`-=${Math.PI}`
 
-      }, "third")
-      .to(horseModel.current.scene.position,{
-        x:"-=0.1",
-        z:"+=0.2",
-        y:"-=0.05"
-      }, "third")
+    tl.to(horseModel.current.scene.position, {
+      z: "-=0.5",
+      y: "+=0.1",
+    })
+      .to(horseModel.current.scene.rotation, {
+        y: `-=${Math.PI / 15}`,
+      })
+      .to(
+        horseModel.current.scene.rotation,
+        {
+          y: `-=${Math.PI}`,
+        },
+        "third"
+      )
+      .to(
+        horseModel.current.scene.position,
+        {
+          x: "-=0.1",
+          z: "+=0.2",
+          y: "-=0.05",
+        },
+        "third"
+      );
   }, []);
 
   return (

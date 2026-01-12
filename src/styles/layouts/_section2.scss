@@ -7,6 +7,7 @@
     display: flex;
     flex-direction: column;
     padding-inline: 5rem;
+
     .top {
       width: 23%;
       h1 {
@@ -21,20 +22,27 @@
     .title {
       display: flex;
       gap: 4rem;
-      opacity: 0.5;
+      opacity: 0.3;
       padding-block: 2rem;
-      align-items: flex-s;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+
       h1 {
         font-size: 6rem;
         font-family: var(--font-thin);
         font-weight: 300;
         line-height: 1;
+        
       }
       small {
         margin-top: 0.6rem;
         font-family: var(--font-bold);
         font-size: 0.9rem;
+        letter-spacing: 0.1rem;
       }
+    }
+    .title:hover {
+      opacity: 1;
     }
   }
 }
