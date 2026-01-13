@@ -31,7 +31,8 @@ const Footer = () => {
       <div className="underline"></div>
       <div className="lnk-btn">
         <div className="center">
-          <p>We'd love to hear from you —— biz@horsestudio.be</p>
+          <p>We'd love to hear from you </p>
+          <span> —— biz@horsestudio.be</span>
         </div>
         <div className="links">
           <p>Subscribe to our newsletter ——</p>

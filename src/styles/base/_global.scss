@@ -12,9 +12,20 @@ body,
   background-color: #15161b;
   color: #fcfcfc;
   font-family: var(--font-regular);
+  user-select: none;
 }
 main {
   position: relative;
+}
+
+/*scrollbar-background*/
+::-webkit-scrollbar {
+  background-color: #000000;
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgba(166, 166, 166, 0.523);
+  border-radius: 50px;
 }
 
 #canvas-elem::after {
