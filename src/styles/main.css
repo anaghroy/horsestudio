@@ -137,10 +137,8 @@ main:has(#section-2 .title[img-title=opera]:hover) #opera {
 
 /*layout*/
 #section-1 {
-  min-height: 100vh;
   position: relative;
   z-index: 2;
-  position: relative;
 }
 #section-1 nav {
   display: flex;
@@ -371,4 +369,78 @@ main:has(#section-2 .title[img-title=opera]:hover) #opera {
 }
 #section-4 .bottom .right p {
   opacity: 0.5;
+}
+
+#section-5 {
+  position: relative;
+  z-index: 2;
+}
+#section-5 .logo {
+  min-width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  padding-inline: 15rem;
+  margin-top: 5rem;
+}
+#section-5 .logo p {
+  color: #fcfcfc;
+  font-family: var(--font-GTregular);
+  font-size: 1.5rem;
+}
+#section-5 .bottom {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-inline: 15rem;
+  margin-top: 1rem;
+}
+#section-5 .bottom .center {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+#section-5 .bottom .center p {
+  font-size: 1.8rem;
+}
+#section-5 .bottom .links {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+#section-5 .underline {
+  width: 70%;
+  height: 1px;
+  padding-block: 2rem;
+  margin-left: 15rem;
+  border-bottom: 0.1rem solid #fcfcfc;
+  opacity: 0.5;
+}
+#section-5 .lnk-btn {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding-inline: 15rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+#section-5 .lnk-btn .center {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+}
+#section-5 .lnk-btn .center p {
+  font-size: 1rem;
+}
+#section-5 .lnk-btn .links {
+  width: 58%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
 }/*# sourceMappingURL=main.css.map */

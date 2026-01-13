@@ -12,6 +12,7 @@ import kikk from "../src/assets/images/kikk.png";
 import kennedy from "../src/assets/images/kennedy.png";
 import opera from "../src/assets/images/opera.png";
 import Section4 from "./components/Section4";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -44,6 +45,7 @@ const App = () => {
         <Section2 />
         <Section3 />
         <Section4 />
+        <Footer/>
       </main>
     </>
   );
