@@ -119,9 +119,9 @@ const Dog = () => {
   /*Referance Material*/
 
   const material = useRef({
-    uMatcap1: { value: mat2 },
-    uMatcap2: { value: mat19 },
-    uProgress: { value: 0.5 },
+    uMatcap1: { value: mat1 },
+    uMatcap2: { value: mat2 },
+    uProgress: { value: 1.0 },
   });
 
   const horseMaterial = new THREE.MeshMatcapMaterial({
@@ -130,7 +130,7 @@ const Dog = () => {
   });
 
   /*Shader function*/
-    function onBeforeCompile(shader) {
+  function onBeforeCompile(shader) {
     shader.uniforms.uMatcapTexture1 = material.current.uMatcap1;
     shader.uniforms.uMatcapTexture2 = material.current.uMatcap2;
     shader.uniforms.uProgress = material.current.uProgress;
@@ -212,6 +212,110 @@ const Dog = () => {
       );
   }, []);
 
+  useEffect(() => {
+    document
+      .querySelector(`.title[img-title="tomorrowland"]`)
+      .addEventListener("mouseenter", () => {
+        material.current.uMatcap1.value = mat19;
+        gsap.to(material.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            material.current.uMatcap2.value = material.current.uMatcap1.value;
+            material.current.uProgress.value = 1.0;
+          },
+        });
+      });
+    document
+      .querySelector(`.title[img-title="navy-pier"]`)
+      .addEventListener("mouseenter", () => {
+        material.current.uMatcap1.value = mat8;
+        gsap.to(material.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            material.current.uMatcap2.value = material.current.uMatcap1.value;
+            material.current.uProgress.value = 1.0;
+          },
+        });
+      });
+    document
+      .querySelector(`.title[img-title="msi-chicago"]`)
+      .addEventListener("mouseenter", () => {
+        material.current.uMatcap1.value = mat9;
+        gsap.to(material.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            material.current.uMatcap2.value = material.current.uMatcap1.value;
+            material.current.uProgress.value = 1.0;
+          },
+        });
+      });
+    document
+      .querySelector(`.title[img-title="phone"]`)
+      .addEventListener("mouseenter", () => {
+        material.current.uMatcap1.value = mat12;
+        gsap.to(material.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            material.current.uMatcap2.value = material.current.uMatcap1.value;
+            material.current.uProgress.value = 1.0;
+          },
+        });
+      });
+    document
+      .querySelector(`.title[img-title="kikk"]`)
+      .addEventListener("mouseenter", () => {
+        material.current.uMatcap1.value = mat10;
+        gsap.to(material.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            material.current.uMatcap2.value = material.current.uMatcap1.value;
+            material.current.uProgress.value = 1.0;
+          },
+        });
+      });
+    document
+      .querySelector(`.title[img-title="kennedy"]`)
+      .addEventListener("mouseenter", () => {
+        material.current.uMatcap1.value = mat8;
+        gsap.to(material.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            material.current.uMatcap2.value = material.current.uMatcap1.value;
+            material.current.uProgress.value = 1.0;
+          },
+        });
+      });
+    document
+      .querySelector(`.title[img-title="opera"]`)
+      .addEventListener("mouseenter", () => {
+        material.current.uMatcap1.value = mat13;
+        gsap.to(material.current.uProgress, {
+          value: 0.0,
+          duration: 0.3,
+          onComplete: () => {
+            material.current.uMatcap2.value = material.current.uMatcap1.value;
+            material.current.uProgress.value = 1.0;
+          },
+        });
+      });
+    document.querySelector(`.titles`).addEventListener("mouseleave", () => {
+      material.current.uMatcap1.value = mat2;
+      gsap.to(material.current.uProgress, {
+        value: 0.0,
+        duration: 0.3,
+        onComplete: () => {
+          material.current.uMatcap2.value = material.current.uMatcap1.value;
+          material.current.uProgress.value = 1.0;
+        },
+      });
+    });
+  }, []);
   return (
     <>
       <primitive

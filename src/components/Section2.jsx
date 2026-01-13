@@ -35,6 +35,7 @@ const Section2 = () => {
           <small>2016 - TODAY</small>
           <h1>Royal opera of Wallonia</h1>
         </div>
+        <div className="first-line"></div>
       </div>
     </section>
   );

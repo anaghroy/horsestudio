@@ -1,0 +1,28 @@
+#section-4 {
+    position: relative;
+    z-index: 999;
+  .top,
+  .bottom {
+    display: flex;
+    gap: 10rem;
+    width: 100%;
+    .top,
+    .left {
+      padding-left: 6rem;
+      // padding-top: 2rem;
+    }
+   
+  }
+  .left,
+  .right {
+    width: 50%;
+  }
+  .bottom .right {
+    display: flex;
+    gap: 2rem;
+    // background-color: greenyellow;
+    p {
+      opacity: 0.5;
+    }
+  }
+}

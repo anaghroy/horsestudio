@@ -2,7 +2,7 @@
   min-height: 100vh;
   position: relative;
   z-index: 2;
-  padding-block: 20rem;
+  margin-block: 20rem;
   .titles {
     display: flex;
     flex-direction: column;
@@ -32,7 +32,6 @@
         font-family: var(--font-thin);
         font-weight: 300;
         line-height: 1;
-        
       }
       small {
         margin-top: 0.6rem;
@@ -43,6 +42,13 @@
     }
     .title:hover {
       opacity: 1;
+    }
+    .first-line {
+      width: 30rem;
+      background-color: #fd4a41db;
+      height: 1px;
+      position: absolute;
+      transform: rotate(150deg) translate(-15rem, -95rem);
     }
   }
 }
