@@ -56,4 +56,4 @@ Horse Studio is an immersive, interactive landing page inspired by the award-win
 5. Open your browser and navigate to the local server URL provided in the terminal (usually `http://localhost:5173`).
 
 ## 8. Live Project Demo
-[Insert Video/GIF/Link Here] *(Replace this placeholder with a link to your live demo, YouTube video, or GIF showing the interactions)*
+[https://github.com/anaghroy/horsestudio/releases/download/v1.0.0/output_progressive_e96a04b2-70c5-4755-bf89-ac6e8c088acc.mp4]
